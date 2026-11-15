@@ -1,16 +1,30 @@
 # Abed Gazi
 
-**Software engineer — Python, full-stack web, and automation.**
+**Data & AI engineer — Python, data pipelines, RAG/LLM systems and full-stack web.**
 Final-year B.Sc. Computer Science & Engineering student at North South University, Dhaka.
 
-I build systems that work end to end and I measure them. My fraud-detection pipeline
-went from 0.27% to 25.4% precision. My Linux monitor makes 4.8× fewer system calls than
+I build systems that work end to end and I measure them. My RAG system answers questions
+about Bangladesh labour law with the correct section cited 90.7% of the time; my ELT pipeline
+models ~400k rows into a tested dbt star schema; my fraud-detection pipeline went from 0.27% to 25.4% precision. My Linux monitor makes 4.8× fewer system calls than
 the naive version, and a built-in check proves the readings are identical. I've also
 shipped a production web platform for an enterprise IT company in Dhaka.
 
 ---
 
 ### Selected work
+
+**[Bangladesh Labour Act — RAG Q&A](https://github.com/abed101-glitch/bd-labour-law-rag)** · Python · pgvector · Ollama · FastAPI
+Local retrieval-augmented generation over the 179-page Labour Act gazette, with section citations,
+refusal guardrails and an evaluation harness.
+- Retrieval **Hit@5 97.7%, MRR 0.92** on 43 labelled questions; answers cite a correct section **90.7%** of the time; out-of-scope questions refused **100%**
+- Ablation showed textbook hybrid search *hurt* on statute text, so I replaced it with a section router plus de-duplication
+- Citation-validity and numeric-grounding checks on every answer, plus a self-correction retry
+
+**[Bangladesh Air-Quality ELT Pipeline](https://github.com/abed101-glitch/bd-air-quality-pipeline)** · Python · PostgreSQL · dbt · Airflow · Streamlit
+Hourly pollution and weather data for 8 divisional cities (2024 to now) → data-quality checks → Postgres → dbt star schema → dashboard.
+- ~400k rows, idempotent `COPY` + upsert loads, quarantine table for rejected rows
+- **35 dbt data tests**, Airflow 3 daily DAG, CI running a live ingest and the full `dbt build`
+- Finding: Dhaka's PM2.5 averaged **9.6× the WHO guideline**, and Rajshahi was worse than Dhaka
 
 **[SentryWatch](https://github.com/abed101-glitch/sentrywatch)** · Python · FastAPI · scikit-learn · n8n
 Event-driven fraud detection pipeline. Transactions arrive at an n8n webhook. A FastAPI
@@ -55,8 +69,9 @@ against U-Net segmentation using SAR, permanent-water and DEM/slope inputs, focu
 | Languages | Python, JavaScript, TypeScript, C, SQL |
 | Back end | FastAPI, Node.js, Express, Prisma, REST APIs, JWT |
 | Front end | React, Next.js, Vite, Tailwind CSS |
-| Data & ML | scikit-learn, pandas, NumPy, PyTorch |
-| Databases | PostgreSQL, MongoDB, SQLite |
+| Data & ML | pandas, scikit-learn, PyTorch, dbt, Apache Airflow, Streamlit |
+| AI / LLM | RAG, embeddings, pgvector, Ollama, prompt engineering, LLM evaluation |
+| Databases | PostgreSQL, Oracle Database 19c (OCP), MongoDB, SQLite |
 | Automation | n8n, webhooks, Telegram Bot API, Google Sheets API |
 | Deployment | Render, Railway, cPanel, Docker, Git, Linux |
 
