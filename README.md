@@ -70,4 +70,4 @@ against U-Net segmentation using SAR, permanent-water and DEM/slope inputs, focu
 
 ### Contact
 
-📧 gazi.abed@yahoo.com · 📍 Dhaka, Bangladesh · Open to on-site and remote roles
+🌐 [abed101-glitch.github.io](https://abed101-glitch.github.io) · 📧 gazi.abed@yahoo.com · 📍 Dhaka, Bangladesh · Open to on-site and remote roles
